@@ -10,6 +10,7 @@ public class Course {
     private String title;
     private String level;  //HND etc..
     private List<Student> students;
+    private List<Lesson> lessons;
 
     public Course(){}
 
@@ -51,6 +52,19 @@ public class Course {
 
     public void setStudents(List<Student> students) {
         this.students = students;
+    }
+
+    @OneToMany(mappedBy="course", fetch = FetchType.LAZY)
+    public List<Lesson> getLessons() {
+        return lessons;
+    }
+
+    public void setLessons(List<Lesson> lessons) {
+        this.lessons = lessons;
+    }
+
+    public void addLessons(Lesson lesson) {
+        this.lessons.add(lesson);
     }
 }//end
 
