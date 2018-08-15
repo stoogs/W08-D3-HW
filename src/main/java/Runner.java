@@ -1,9 +1,15 @@
+import db.DBHelper;
+import models.Lesson;
+import models.Mentor;
+
 public class Runner {
 
     public static void main(String[] args) {
 
-
-
+    Mentor mentor1 = new Mentor("Mr Mentor");
+    DBHelper.save(mentor1);
+    Lesson english = new Lesson("English lesson", 23);
+    DBHelper.save(english);
 
 
 
