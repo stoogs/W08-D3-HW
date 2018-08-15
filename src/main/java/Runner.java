@@ -2,6 +2,7 @@ import db.DBHelper;
 import models.Course;
 import models.Lesson;
 import models.Mentor;
+import models.Student;
 
 public class Runner {
 
@@ -13,7 +14,8 @@ public class Runner {
     DBHelper.save(english);
     Course englishCourse = new Course("English HND", "HND");
     DBHelper.save(englishCourse);
-
+    Student student1 = new Student("Stoo", 2,34);
+    DBHelper.save(student1);
 
 
 
