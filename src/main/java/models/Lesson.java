@@ -27,7 +27,7 @@ public class Lesson {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -35,7 +35,8 @@ public class Lesson {
     public void setId(int id) {
         this.id = id;
     }
-    @Column(name="title")
+
+    @Column(name = "title")
     public String getTitle() {
         return title;
     }
@@ -43,7 +44,8 @@ public class Lesson {
     public void setTitle(String title) {
         this.title = title;
     }
-    @Column(name="classroom_number")
+
+    @Column(name = "classroom_number")
     public int getClassroomNumber() {
         return classroomNumber;
     }
@@ -53,7 +55,7 @@ public class Lesson {
     }
 
     @ManyToOne
-    @JoinColumn(name="course_id", nullable=false)
+    @JoinColumn(name = "course_id", nullable = false)
     public Course getCourse() {
         return course;
     }
@@ -67,7 +69,6 @@ public class Lesson {
     @JoinTable(name = "student_lesson",
             joinColumns = {@JoinColumn(name = "lesson_id", nullable = false, updatable = false)},
             inverseJoinColumns = {@JoinColumn(name = "student_id", nullable = false, updatable = false)})
-
     public List<Student> getStudents() {
         return students;
     }
@@ -75,6 +76,13 @@ public class Lesson {
     public void setStudents(List<Student> students) {
         this.students = students;
     }
-}
 
+    public void addStudent(Student student) {
+        this.students.add(student);
+    }
+
+    public void addAStudent(Student student) {
+        this.students.add(student);
+    }
+}
 

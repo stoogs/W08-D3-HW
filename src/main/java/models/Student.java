@@ -86,12 +86,16 @@ public class Student {
     @JoinTable(name = "student_lesson",
             joinColumns = {@JoinColumn(name = "student_id", nullable = false, updatable = false)},
             inverseJoinColumns = {@JoinColumn(name = "lesson_id", nullable = false, updatable = false)})
-
+    @Column(name="lessons")  //TODO did this break it?
     public List<Lesson> getLessons() {
         return lessons;
     }
 
     public void setLessons(List<Lesson> lessons) {
         this.lessons = lessons;
+    }
+
+    public void addToLesson(Lesson lesson) {
+        this.lessons.add(lesson);
     }
 }

@@ -1,6 +1,7 @@
 package models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -12,11 +13,14 @@ public class Course {
     private List<Student> students;
     private List<Lesson> lessons;
 
+
     public Course(){}
 
     public Course(String title, String level) {
         this.title = title;
         this.level = level;
+        this.students = new ArrayList<Student>();
+        this.lessons = new ArrayList<Lesson>();
     }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,7 +48,7 @@ public class Course {
     public void setLevel(String level) {
         this.level = level;
     }
-
+    @Column(name="students")
     @OneToMany(mappedBy="course", fetch = FetchType.LAZY)
     public List<Student> getStudents() {
         return students;
@@ -55,6 +59,7 @@ public class Course {
     }
 
     @OneToMany(mappedBy="course", fetch = FetchType.LAZY)
+    @Column(name="lessons")
     public List<Lesson> getLessons() {
         return lessons;
     }
@@ -66,6 +71,12 @@ public class Course {
     public void addLessons(Lesson lesson) {
         this.lessons.add(lesson);
     }
+
+    public void addStudent(Student student) {
+        this.students.add(student);
+    }
+
+
 }//end
 
 
