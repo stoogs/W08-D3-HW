@@ -1,4 +1,5 @@
 import db.DBHelper;
+import models.Course;
 import models.Lesson;
 import models.Mentor;
 
@@ -8,8 +9,10 @@ public class Runner {
 
     Mentor mentor1 = new Mentor("Mr Mentor");
     DBHelper.save(mentor1);
-    Lesson english = new Lesson("English lesson", 23);
+    Lesson english = new Lesson("English day 1", 23);
     DBHelper.save(english);
+    Course englishCourse = new Course("English HND", "HND");
+    DBHelper.save(englishCourse);
 
 
 
