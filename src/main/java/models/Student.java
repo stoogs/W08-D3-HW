@@ -8,13 +8,17 @@ public class Student {
     private String name;
     private int age;
     private int enrollmentNo;
+    private Mentor mentor;
+    private Course course;
 
     public Student(){ }
 
-    public Student(String name, int age, int enrollmentNo) {
+    public Student(String name, int age, int enrollmentNo, Course course) {
         this.name = name;
         this.age = age;
         this.enrollmentNo = enrollmentNo;
+        this.mentor = mentor;
+        this.course = course;
     }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,5 +53,24 @@ public class Student {
 
     public void setEnrollmentNo(int enrollmentNo) {
         this.enrollmentNo = enrollmentNo;
+    }
+
+    @OneToOne(mappedBy = "student", fetch = FetchType.LAZY)
+    public Mentor getMentor() {
+        return mentor;
+    }
+
+    public void setMentor(Mentor mentor) {
+        this.mentor = mentor;
+    }
+
+    @ManyToOne
+    @JoinColumn(name="course_id", nullable=false)
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 }

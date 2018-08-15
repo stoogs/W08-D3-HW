@@ -8,14 +8,15 @@ public class Runner {
 
     public static void main(String[] args) {
 
-    Mentor mentor1 = new Mentor("Mr Mentor");
-    DBHelper.save(mentor1);
     Lesson english = new Lesson("English day 1", 23);
     DBHelper.save(english);
     Course englishCourse = new Course("English HND", "HND");
     DBHelper.save(englishCourse);
-    Student student1 = new Student("Stoo", 2,34);
+    Student student1 = new Student("Stoo", 2,34, englishCourse);
     DBHelper.save(student1);
+    Mentor mentor1 = new Mentor("Mr Mentor", student1);
+    DBHelper.save(mentor1);
+
 
 
 
